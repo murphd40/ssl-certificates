@@ -14,6 +14,8 @@ echo "Required fields: Country Name, State or Province Name, Organization Name, 
 openssl req -config $wd/openssl.cnf \
   -key /out/ca.key.pem \
   -new -x509 -days 7300 -sha256 -extensions v3_ca \
+  # todo - make this configurable (IP SANs)
+  -addext 'subjectAltName = IP:10.10.171.104' \
   -out /out/ca.cert.pem
 echo "done"
 
